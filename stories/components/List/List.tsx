@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {forwardRef} from 'react';
 import classNames from 'classnames';
 
@@ -12,6 +13,8 @@ export interface Props {
 
 export const List = forwardRef<HTMLUListElement, Props>(
   ({children, columns = 1, horizontal, style}: Props, ref) => {
+    console.log('List', columns, horizontal, style);
+
     return (
       <ul
         ref={ref}

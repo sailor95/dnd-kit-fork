@@ -1,15 +1,16 @@
+/* eslint-disable prettier/prettier */
 import React, {useEffect, useRef, useState} from 'react';
 import {createPortal} from 'react-dom';
 
 import {
   Active,
   Announcements,
-  closestCenter,
+  closestCenter, // required
   CollisionDetection,
   DragOverlay,
-  DndContext,
+  DndContext, // required
   DropAnimation,
-  KeyboardSensor,
+  KeyboardSensor, // required
   KeyboardCoordinateGetter,
   Modifiers,
   MouseSensor,
@@ -18,15 +19,15 @@ import {
   ScreenReaderInstructions,
   TouchSensor,
   UniqueIdentifier,
-  useSensor,
-  useSensors,
+  useSensor, // required
+  useSensors, // required
   defaultDropAnimationSideEffects,
 } from '@dnd-kit/core';
 import {
-  arrayMove,
+  arrayMove, // required
   useSortable,
-  SortableContext,
-  sortableKeyboardCoordinates,
+  SortableContext, // required
+  sortableKeyboardCoordinates, // required
   SortingStrategy,
   rectSortingStrategy,
   AnimateLayoutChanges,
@@ -191,12 +192,16 @@ export function Sortable({
 
   return (
     <DndContext
+      // no need
       accessibility={{
         announcements,
         screenReaderInstructions,
       }}
+      // need (added)
       sensors={sensors}
+      // need (added)
       collisionDetection={collisionDetection}
+      // need (added)
       onDragStart={({active}) => {
         if (!active) {
           return;
@@ -204,6 +209,7 @@ export function Sortable({
 
         setActiveId(active.id);
       }}
+      // need (added)
       onDragEnd={({over}) => {
         setActiveId(null);
 
@@ -214,8 +220,11 @@ export function Sortable({
           }
         }
       }}
+      // need (added)
       onDragCancel={() => setActiveId(null)}
+      // no need
       measuring={measuring}
+      // no need
       modifiers={modifiers}
     >
       <Wrapper style={style} center>
